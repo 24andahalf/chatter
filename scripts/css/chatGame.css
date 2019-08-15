@@ -1,0 +1,29 @@
+
+    .chatContainer { display: grid; height: 100vh; width: 100vw; position: absolute; top: 0; left: 0; grid-template-columns: 1fr 8fr 1fr; grid-template-rows: 10vh 15vh 60vh 5vh 10vh; grid-gap: 2px;  grid-row-start: 1; grid-gap: 0px; }
+    
+    .header { background-color: red; grid-column-start: 1; grid-column-end: 4; display: flex; flex-direction: column; justify-content: center;}
+    .left { background-color: blue; grid-row-start: 2; grid-row-end: 5;}
+    .middle { background-color: green;  grid-row-start: 2;  grid-row-end: 5;position: relative; }
+    .right { background-color: blueviolet;  grid-row-start: 2;  grid-row-end: 5;}
+    .footer { background-color: red; grid-column-start: 1; grid-column-end: 4;  grid-row-start: 5;  display: flex; flex-direction: column; justify-content: center;}
+
+    .chatterHeader { display: none; background-color: purple; grid-column-start: 1; grid-column-end: 4;grid-row-start: 2;  }
+    .chatterBody { display: none; background-color: white; grid-column-start: 1; grid-column-end: 4;grid-row-start: 3; overflow-y: auto;  }
+    .chatterInteract { display: none; background-color: grey; grid-column-start: 1; grid-column-end: 4;grid-row-start: 4; min-width: 100%; min-height: 100%;  }
+    .chatterPic { height: calc(100% - 30px); margin: 15px; }
+    .interactContainer { width: 100%; height: 100%; display: flex; flex-direction: row; justify-content: space-evenly; position: relative;}
+    .interactContainer * { cursor: pointer !important; }
+    .interactButton { width: calc(100% / 9); padding-top: 10px;  background-color: blue; border: solid white 2px; float: left; pointer-events: all;  }
+
+    .title { font-size: 5em; text-align: center; padding: 0 2.5em;  }
+    .instructions { font-size: 3.5em; text-align: center; padding: 0 2.5em; }
+
+    .selectors { padding: 1em; height: 100%; width: 100%; box-sizing: border-box; position: relative; overflow-y: auto; }
+    .selector { margin-top: 1em; width: 100%; height: 200px; background-color: white; }
+    .selector>img { float: left; margin: 10px; height: 180px; width: 180px; overflow: hidden; }
+    .selector>.status { float: left; padding: 10px; box-sizing: border-box; width: calc(100% - 200px); height: 100%; font-size: 2.5em; }
+
+    .userText { font-size: 3.5em; padding: 0.25em 1em; background-color: peachpuff; max-width: 60%; float: right; margin: 10px 0; clear: both; border-radius: 1em 0 0 1em; }
+    .friendText { font-size: 3.5em; padding: 0.25em 1em; background-color: aqua; max-width: 60%; float: left; margin: 10px 0; clear: both; border-radius: 0 1em 1em 0; }
+    
+    .disabled { pointer-events: none !important; cursor: auto; }

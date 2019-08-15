@@ -6,7 +6,7 @@ $(window).on("load", function() {
 	
 	// have buttons add in data that is its key so we can easily call that later down the code. Yay smart Bill!
 	for (var i = 0; i < size; i++) { 
-        $('.selectors').append('<div class="selector" id="'+i+'"><img src="'+friends[objectNames[i]].image+'" class="selfie"><div class="status">'+friends[objectNames[i]].name+'</div></div>');
+        $('.selectors').append('<div class="selector" id="'+i+'"><img src="'+friends[objectNames[i]].image.profile+'" class="selfie"><div class="status">'+friends[objectNames[i]].name+'</div></div>');
         
     }
 
@@ -21,7 +21,6 @@ $(window).on("load", function() {
 		currFriendID = $(this).attr('id');
 		currFriend = allFriends[currFriendID];
 		currFriendProps = Object.keys(friends[currFriend]);
-		console.log( friends[currFriend].name );
 
 		$('.left').hide();
 		$('.middle').hide();
@@ -29,13 +28,12 @@ $(window).on("load", function() {
 		$('.chatterHeader').show();
 		$('.chatterBody').empty().show();
 		$('.chatterInteract').show();
-		$('.chatterPic').attr("src",friends[objectNames[currFriendID]].image);
+		$('.chatterPic').attr("src",friends[objectNames[currFriendID]].image.default);
 		friends[objectNames[currFriendID]].chatProg = 0;
 		$('.interactButton').removeClass('disabled');
 	});
 
 	$(document).on('click', '.love', function() {
-		//console.log(currFriend);
 		friends[currFriend].chatOption1();
 	});
 	$(document).on('click', '.convo', function() {
@@ -46,13 +44,13 @@ $(window).on("load", function() {
 	});
 	$(document).on('click', '.bye', function() {
 		friends[currFriend].convoBye();
-		setTimeout(endChat, 1500)
 		
 	});
 
 } );
 
 function endChat(){
+	console.log("Ending running in the end chat");
 	$('.chatterHeader').hide();
 	$('.chatterBody').hide();
 	$('.chatterInteract').hide();
@@ -61,9 +59,8 @@ function endChat(){
 	$('.right').show();
 }
 
-function scrollUpdate(){
+function update(friend){
 	var realHeight = 0;
-	console.log($('.chatterBody').height()+" "+$('.chatterBody').scrollTop());
 	$(".chatterBody").children().each(function(){
 		realHeight = realHeight + $(this).outerHeight(true);
 	});
@@ -72,11 +69,29 @@ function scrollUpdate(){
 		realHeight = 0
 	} 
 	$('.chatterBody').animate({ scrollTop: realHeight }, "slow");
+	$('.chatterPic').attr("src", friend.image[friend.emotions[friend.chatProg]]);
 }
 
-function sendChat(text){
-	console.log(text);
-	$('.chatterBody').append("<div class='friendText'>"+text+"</div>");
+function sendChat(currFriend, currChat){
+	
+	var userChat = currFriend['convoUser'+currChat];
+	var friendChat = currFriend['convo'+currChat];
+	if (currChat == "End"){
+		console.log("Running ending from send chat");
+		$('.chatterBody').append("<div class='userText'>"+currFriend.convoUserEnd+"</div>");
+		setTimeout(function(){
+			$('.chatterBody').append("<div class='friendText'>"+currFriend.convoEnd+"</div>");
+		}, 2000);
+		
+		setTimeout(endChat, 4000);	
+	} else {
+		$('.chatterBody').append("<div class='userText'>"+userChat[currFriend.chatProg]+"</div>");
+		setTimeout(function(){
+			$('.chatterBody').append("<div class='friendText'>"+friendChat[currFriend.chatProg]+"</div>");
+			currFriend.chatProg++;
+			update(currFriend);
+		}, 2000);
+	}
 }
 
 function endCheck(current, max){

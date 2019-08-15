@@ -3,47 +3,49 @@
 var friends = {
 			
     friend1: {
-        image: "https://placekitten.com/180/180",
+        image: {
+            profile: "images/dinah-profile.png",
+            default: "images/dinah-default.png",
+            laugh: "images/dinah-laugh.png",
+            sad: "images/dinah-sad.png",
+            angry: "images/dinah-angry.png"
+        },
+        emotions: ["default", "laugh", "angry", "sad", "default"],
         name: "Floofer",
-        convoA: [ "Snarf!", "Scarf!", "Sharf!" ],
+        convoA: [ "Snarf!<i class='em em-100'></i>", "Scarf!", "Sharf!" ],
         convoB: [ "Znarf!", "Zcarf!", "Zharf!" ],
         convoC: [ "Cnarf!", "Ccarf!", "Charf!" ],
+        convoUserA: [ "Snarf!", "Scarf!", "Sharf!" ],
+        convoUserB: [ "Znarf!", "Zcarf!", "Zharf!" ],
+        convoUserC: [ "Cnarf!", "Ccarf!", "Charf!" ],
         chatProg: 0,  
         chatMax: 4,  
         chatOption1: function(){
             if (endCheck(this.chatProg, this.chatMax)){
                 this.convoBye();
-                setTimeout(endChat, 1500)
             } else {
-                sendChat(this.convoA[this.chatProg]);
-                this.chatProg++;
-                scrollUpdate();
+                sendChat(this, "A");
             }
         },
         chatOption2: function(){
             if (endCheck(this.chatProg, this.chatMax)){
                 this.convoBye();
-                setTimeout(endChat, 1500)
             } else {
-                sendChat(this.convoB[this.chatProg]);
-                this.chatProg++;
-                scrollUpdate();
+                sendChat(this, "B");
             } 
         },
         chatOption3: function(){
             if (endCheck(this.chatProg, this.chatMax)){
                 this.convoBye();
-                setTimeout(endChat, 1500)
             } else {
-                sendChat(this.convoC[this.chatProg]);
-                this.chatProg++;
-                scrollUpdate();
+                sendChat(this, "C");
+                
             }
         }, 
         convoEnd: "Okee dokey. Talk to you laterz!", 
+        convoUserEnd: "Okee dokey. Talk to you laterz!", 
         convoBye: function(){
-            sendChat(this.convoEnd);
-            $('.interactButton').addClass('disabled');
+            sendChat(this, "End");
         },
     },	
     friend2: {
@@ -57,38 +59,43 @@ var friends = {
         chatOption1: function(){
             if (endCheck(this.chatProg, this.chatMax)){
                 this.convoBye();
-                setTimeout(endChat, 1500)
+                setTimeout(endChat, 2000)
             } else {
                 sendChat(this.convoA[this.chatProg]);
-                this.chatProg++;
-                scrollUpdate();
+                
             }
+            
+            update(this);
         },
         chatOption2: function(){
             if (endCheck(this.chatProg, this.chatMax)){
                 this.convoBye();
-                setTimeout(endChat, 1500)
+                setTimeout(endChat, 2000)
             } else {
                 sendChat(this.convoB[this.chatProg]);
                 this.chatProg++;
-                scrollUpdate();
             } 
+            
+            update(this);
         },
         chatOption3: function(){
             if (endCheck(this.chatProg, this.chatMax)){
                 this.convoBye();
-                setTimeout(endChat, 1500)
+                setTimeout(endChat, 2000)
             } else {
                 sendChat(this.convoC[this.chatProg]);
                 this.chatProg++;
-                scrollUpdate();
+                
             }
+            
+            update(this);
         }, 
         convoEnd: "Okee dokey. Talk to you laterz!", 
         convoBye: function(){
             sendChat(this.convoEnd);
-            scrollUpdate();
             
+            setTimeout(endChat, 2000)
+            update(this);
         },
     },	
     friend3: {

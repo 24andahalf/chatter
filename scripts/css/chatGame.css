@@ -13,7 +13,12 @@
     .chatterPic { height: calc(100% - 30px); margin: 15px; }
     .interactContainer { width: 100%; height: 100%; display: flex; flex-direction: row; justify-content: space-evenly; position: relative;}
     .interactContainer * { cursor: pointer !important; }
-    .interactButton { width: calc(100% / 9); padding-top: 10px;  background-color: blue; border: solid white 2px; float: left; pointer-events: all;  }
+    .interactButton { width: calc(100% / 9); padding-top: 10px;  background-color: blue; border: solid white 2px; float: left; pointer-events: all; z-index: 2 }
+
+    .typingWrapper { position: absolute; top: -120px; width: 100%; height: 120px; z-index: 0;}
+    .typingContainer { width: 50%; height: 40px; padding: 40px 0; background-color: green; border-radius: 35px 35px 0 0 ; margin: 0 auto; display: flex; flex-direction: row; justify-content: space-evenly; }
+    .dot { background-color: white; width: 40px; height: 40px; border-radius: 50% }
+    .containerBG { position: absolute; width: 100%; height: 100%; background-color: aqua; z-index: 1; }
 
     .title { font-size: 5em; text-align: center; padding: 0 2.5em;  }
     .instructions { font-size: 3.5em; text-align: center; padding: 0 2.5em; }
@@ -23,7 +28,7 @@
     .selector>img { float: left; margin: 10px; height: 180px; width: 180px; overflow: hidden; }
     .selector>.status { float: left; padding: 10px; box-sizing: border-box; width: calc(100% - 200px); height: 100%; font-size: 2.5em; }
 
-    .userText { font-size: 3.5em; padding: 0.25em 1em; background-color: peachpuff; max-width: 60%; float: right; margin: 10px 0; clear: both; border-radius: 1em 0 0 1em; }
-    .friendText { font-size: 3.5em; padding: 0.25em 1em; background-color: aqua; max-width: 60%; float: left; margin: 10px 0; clear: both; border-radius: 0 1em 1em 0; }
+    .userText { font-size: 3.5em; padding: 0.25em 1em; background-color: peachpuff; max-width: 60%; float: right; margin: 1vh 0; clear: both; border-radius: 1em 0 0 1em; }
+    .friendText { font-size: 3.5em; padding: 0.25em 1em; background-color: aqua; max-width: 60%; float: left; margin: 1vh 0; clear: both; border-radius: 0 1em 1em 0; }
     
     .disabled { pointer-events: none !important; cursor: auto; }

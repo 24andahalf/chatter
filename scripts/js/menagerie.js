@@ -12,14 +12,14 @@ var friends = {
         },
         emotions: ["default", "laugh", "angry", "sad", "default"],
         name: "Floofer",
-        convoA: [ "Snarf!<i class='em em-100'></i>", "Scarf!", "Sharf!" ],
-        convoB: [ "Znarf!", "Zcarf!", "Zharf!" ],
-        convoC: [ "Cnarf!", "Ccarf!", "Charf!" ],
+        convoA: [ "Snarf!<i class='em em-100'></i>", "Scaharfharfharf harfharf harf harfharfharfrf!", "Shharfharfharf harfharfharf harf harfharfharfarf!", "Shaharharf harfvfharfharfrf!", "Sharf!", "Sharf!", "Sharf!" ],
+        convoB: [ "Znarharfharff!", "Zcaharfharfrf!", "Zhaharfharfharfrf!", "Sharf!", "Sharfharfharfharfharf!", "Shaharfharf harf harfharfharfharfrf!", "Shaharf  harf harfvharf harfharfharfrf!" ],
+        convoC: [ "Cnaharfharf harfharfharfrf!", "Ccaharf harfharfharfharf harf harfharfrf!", "Chharfarf!", "Sharf!", "Sharf!", "Sharf!", "Sharf!" ],
         convoUserA: [ "Snarf!", "Scarf!", "Sharf!" ],
         convoUserB: [ "Znarf!", "Zcarf!", "Zharf!" ],
         convoUserC: [ "Cnarf!", "Ccarf!", "Charf!" ],
         chatProg: 0,  
-        chatMax: 4,  
+        chatMax: 7,  
         chatOption1: function(){
             if (endCheck(this.chatProg, this.chatMax)){
                 this.convoBye();
@@ -47,6 +47,7 @@ var friends = {
         convoBye: function(){
             sendChat(this, "End");
         },
+        typingSpeed: 2.5,
     },	
     friend2: {
         image: "https://placekitten.com/180/190",
